@@ -11,6 +11,7 @@ def generate_profile(age: int) -> str:
 
 
 # Get user input
+print("Hello! Let's register your profile.\n")
 user_name: str = input("Enter your full name: ")
 birth_year_str: str = input("Enter your birth year: ")
 birth_year: int = int(birth_year_str)
@@ -32,7 +33,7 @@ while True:
 # Process and Generate the Profile
 
 # Call generate_profile to get the life stage
-life_stage:str = generate_profile(current_age)
+life_stage: str = generate_profile(current_age)
 
 # Create user-profile dict
 user_profile = {
@@ -41,3 +42,26 @@ user_profile = {
     'stage': life_stage,
     "hobbies": hobbies,
 }
+
+
+# User profile display func
+def display_profile_summary(profile: dict) -> None:
+    print("---")
+    print("Profile Summary:")
+    print(f"Name: {profile['name']}")
+    print(f"Age: {profile['age']}")
+    print(f"Life Stage: {profile['stage']}")
+    # Check if hobbies list is empty
+    if not profile["hobbies"]:
+        print("You didn't mention any hobbies.")
+    else:
+        # Print number of hobbies and list them
+        print(f"Favorite Hobbies ({len(profile['hobbies'])}):")
+        for hobby in profile["hobbies"]:
+            print(f"- {hobby}")
+
+    print("---")
+
+
+# Display the final form of profile
+display_profile_summary(user_profile)
