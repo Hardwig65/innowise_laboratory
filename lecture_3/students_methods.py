@@ -1,12 +1,12 @@
 import json
 
 # Stores the current student dataset into a JSON file
-def students_saver(students, filename="students_list.json"):
+def students_saver(students, filename="students_list.json") -> None:
     with open(filename, "w", encoding="utf-8") as f:
         json.dump(students, f, indent=4, ensure_ascii=False)
 
 # Loads the student dataset from a JSON file (returns empty list if missing)
-def students_loader(filename="students_list.json"):
+def students_loader(filename="students_list.json") -> list[dict]:
     try:
         with open(filename, "r", encoding="utf-8") as f:
             return json.load(f)
@@ -14,7 +14,7 @@ def students_loader(filename="students_list.json"):
         return []
 
 # Adds a new student to the list (ensures uniqueness and valid name)
-def student_add(students):
+def student_add(students) -> None:
     while True:
 
         name = input("Enter student name: ").strip().title()
@@ -30,7 +30,7 @@ def student_add(students):
         break
 
 # Appends grades for an existing student
-def grade_add(students):
+def grade_add(students) -> None:
     name = input("Enter student name: ").title()
     if any(student["name"] == name for student in students):
         for student in students:
@@ -54,7 +54,7 @@ def grade_add(students):
         print("Student is not found")
 
 # Prints each student's average and overall class statistics
-def show_report(students):
+def show_report(students) -> None:
     print("--- Student Grade Analyzer ---")
     students_average = []
     if len(students) == 0:
@@ -77,7 +77,7 @@ def show_report(students):
 
 
 # Determines the student with the highest average grade
-def best_student(students):
+def best_student(students) -> None:
     if not students:
         print("There are no students.")
         return
