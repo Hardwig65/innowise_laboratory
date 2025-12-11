@@ -8,7 +8,7 @@ from pydantic import BaseModel
 
 app = FastAPI()
 
-# Создать таблицы, если ещё нет
+# Create table if not exists
 Base.metadata.create_all(bind=engine)
 
 class BookCreate(BaseModel):
